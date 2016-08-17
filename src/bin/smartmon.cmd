@@ -7,11 +7,11 @@ IF %PROCESSOR_ARCHITECTURE% == x86 (
   )
 
 :: Get the list of disks
-SET COMMAND_TO_RUN=win32\smartctl.exe --scan
+SET COMMAND_TO_RUN="%SPLUNK_HOME%\etc\apps\smartmon\bin\%ARCH%\smartctl.exe" --scan
 
 :: Run smartctl on each disk
 for /f "usebackq tokens=*" %%a in (`%COMMAND_TO_RUN%`) do (
 	for /f "tokens=1 delims= " %%b in ("%%a") do (
-		%ARCH%\smartctl.exe -a %%b
+		"%SPLUNK_HOME%\etc\apps\smartmon\bin\%ARCH%\smartctl.exe" -a %%b
 	)
 )
