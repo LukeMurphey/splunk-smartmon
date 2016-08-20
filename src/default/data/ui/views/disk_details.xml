@@ -1,0 +1,154 @@
+<form>
+  <label>Disk Details</label>
+  <fieldset submitButton="false" autoRun="true">
+    <input type="dropdown" token="serial_number" searchWhenChanged="true">
+      <label>Disk</label>
+      <search>
+        <query>sourcetype=smartmon | stats latest(Device_Model) as Device_Model by Serial_Number | eval name=Device_Model." (".Serial_Number.")"</query>
+        <earliest>@y</earliest>
+        <latest>now</latest>
+      </search>
+      <fieldForLabel>name</fieldForLabel>
+      <fieldForValue>Serial_Number</fieldForValue>
+    </input>
+  </fieldset>
+  <row>
+    <panel>
+      <single>
+        <search>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | fillnull Reallocated_Sector_Ct | timechart max(Reallocated_Sector_Ct)</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xf7bc38","0xd93f3c"]</option>
+        <option name="rangeValues">[0,4]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Reallocated Sector Count</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | fillnull Offline_Uncorrectable | timechart max(Offline_Uncorrectable)</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[1]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Offline Uncorrectable Errors</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | fillnull Command_Timeout | timechart max(Command_Timeout)</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xf58f39","0xd93f3c"]</option>
+        <option name="rangeValues">[0,13]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Command Timeouts</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | fillnull Current_Pending_Sector| timechart max(Current_Pending_Sector)</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[1]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Current Pending Sectors</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | fillnull Reported_Uncorrect| timechart max(Reported_Uncorrect)</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xd93f3c"]</option>
+        <option name="rangeValues">[1]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Reported Uncorrectable Errors</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+        <option name="linkView">search</option>
+        <option name="drilldown">none</option>
+      </single>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <table>
+        <title>Disk Specifications</title>
+        <search>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | table host Device_Model Serial_Number Firmware_Version User_Capacity Sector_Size Rotation_Rate Wear_Leveling_Count Temperature* | eval row="Value" | transpose column_name="Data" header_field=row include_empty=false</query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">10</option>
+      </table>
+    </panel>
+  </row>
+</form>

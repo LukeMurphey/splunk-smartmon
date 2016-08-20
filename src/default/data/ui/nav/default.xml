@@ -1,0 +1,4 @@
+<nav color="#04aeda">
+  <view name="disk_monitoring" default="true" />
+  <view name="disk_details" />
+</nav>
