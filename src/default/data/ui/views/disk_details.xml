@@ -23,7 +23,7 @@
         <option name="colorBy">value</option>
         <option name="colorMode">block</option>
         <option name="numberPrecision">0</option>
-        <option name="rangeColors">["0x65a637","0xf7bc38","0xd93f3c"]</option>
+        <option name="rangeColors">["0x65a637","0xf58f39","0xd93f3c"]</option>
         <option name="rangeValues">[0,4]</option>
         <option name="showSparkline">1</option>
         <option name="showTrendIndicator">1</option>
