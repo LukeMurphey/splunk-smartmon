@@ -9,7 +9,7 @@
     
     <!-- Set up some basic parameters -->
     <property name="value.src.directory" value="src" />
-    <property name="value.temp.directory" value="${java.io.tmpdir}/${user.name}/${ant.project.name}" />
+    <property name="value.temp.directory" value="${java.io.tmpdir}" />
     <property name="value.build.appname" value="${ant.project.name}" />
     
     <!-- Set up the ant classpath -->
@@ -199,7 +199,6 @@
         
         <!-- Delete the temporary location so that old files do not get streamed in -->
         <delete dir="${value.temp.directory}" />
-        
         <echo>App ${value.build.appname} build ${value.build.number} created: ${value.build.packageoutput.directory}/${value.build.appname}.tar.gz</echo>
 
     </target>
