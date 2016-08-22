@@ -1,8 +1,13 @@
-$ #!/bin/sh
+#!/bin/sh
 
-# Determine the host OS (is Linux or Darwin)
+# Create a reference to the smartctl command
+SMARTCTL="smartctl"
 
 # Get the list of disks
+#DISKS=`$SMARTCTL --scan`
+DISKS=$($SMARTCTL --scan)
 
-# For each disk, get the smart data
-
+# Run smartctl on each disk
+while read -r DISK; do
+    eval $SMARTCTL -a $DISK
+done <<< "$DISKS"
