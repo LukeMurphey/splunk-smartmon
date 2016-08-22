@@ -9,7 +9,7 @@
     
     <!-- Set up some basic parameters -->
     <property name="value.src.directory" value="src" />
-    <property name="value.temp.directory" value="${java.io.tmpdir}" />
+    <property name="value.temp.directory" value="${java.io.tmpdir}/${user.name}" />
     <property name="value.build.appname" value="${ant.project.name}" />
     
     <!-- Set up the ant classpath -->
@@ -117,6 +117,7 @@
             <filterset begintoken="${" endtoken="}"> 
                 <filter token="value.build.number" value="${value.build.number}" />
             	<filter token="value.build.date" value="${value.build.date}" />
+            	<filter token="value.version.number" value="${value.version.number}" />
             </filterset>
         </copy>
         
