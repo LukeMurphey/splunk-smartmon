@@ -5,8 +5,9 @@ SMARTCTL="smartctl"
 
 # Get the list of disks
 DISKS=$($SMARTCTL --scan)
+TEST="short"
 
 # Run smartctl on each disk
 while read -r DISK; do
-    eval $SMARTCTL -a $DISK
+    eval $SMARTCTL -t $TEST $DISK
 done <<< "$DISKS"
