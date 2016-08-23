@@ -190,10 +190,16 @@
         <property name="value.temp.tar_package.file" value="${value.temp.directory}/${value.build.appname}.tar" />
         
         <!-- Tar the files -->
-        <tar destfile="${value.temp.tar_package.file}"
-             basedir="${export_dir}"
-             excludes=" **/*.tmp, **/*.pyc"
-        />
+        <tar destfile="${value.temp.tar_package.file}">
+        	<tarfileset dir="${export_dir}" filemode="755">
+        		<include name="**/*.sh" />
+        	</tarfileset>
+        	<tarfileset dir="${export_dir}">
+        		<exclude name="**/*.sh" />
+        		<exclude name="**/*.pyc" />
+        		<exclude name="**/*.tmp" />
+        	</tarfileset>
+        </tar>
         
         <!-- Gzip the files -->
         <gzip src="${value.temp.tar_package.file}" destfile="${value.build.packageoutput.directory}/${value.build.appname}.tar.gz"/>
@@ -235,7 +241,15 @@
           target: deploy
          ================================= -->
     <target name="deploy" depends="splunk.bump_if_necessary,setup_tmp_directory_for_deployment,set_minimize_for_deploy,populate_export_dir" description="Deploys the app to an instance of Splunk" >
-        <echo>App ${value.build.appname} build ${value.build.number} deployed to ${export_dir}</echo>
+        
+    	<!-- Set the permissions for *nix hosts -->
+    	<chmod perm="755">
+    		<fileset dir="${export_dir}/${value.build.appname}">
+    		    <include name="**/*.sh"/>
+    		</fileset>
+    	</chmod>
+    	
+    	<echo>App ${value.build.appname} build ${value.build.number} deployed to ${export_dir}</echo>
     </target>
     
     <!-- ================================= 
