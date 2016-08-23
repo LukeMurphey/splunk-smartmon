@@ -139,7 +139,7 @@
       <table>
         <title>Disk Specifications</title>
         <search>
-          <query>sourcetype=smartmon Serial_Number=7D4520004758 | head 1 | table host Device_Model Serial_Number Firmware_Version User_Capacity Sector_Size Rotation_Rate Wear_Leveling_Count Temperature* | eval row="Value" | eval Temperature_Fahrenheit=Temperature_Celsius*1.8+32 | transpose column_name="Data" header_field=row include_empty=false</query>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | table host Device_Model Serial_Number Firmware_Version User_Capacity Sector_Size Rotation_Rate Wear_Leveling_Count Temperature* | eval row="Value" | eval Temperature_Fahrenheit=Temperature_Celsius*1.8+32 | transpose column_name="Data" header_field=row include_empty=false</query>
           <earliest>-30d@d</earliest>
           <latest>now</latest>
         </search>
