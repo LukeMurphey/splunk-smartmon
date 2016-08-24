@@ -108,5 +108,5 @@ Change History
 |         | Added last observed time (useful to determine if hosts are reliably reporting data)                              |
 |         | Added temperature monitoring to the disk details page                                                            |
 |         | Fixing issue where attributes were sometimes listed as blank (due to parse issue)                                |
-|         | Disk details page now includes panel in tabs                                                                     |
+|         | Disk details page now includes panels in tabs                                                                    |
 +---------+------------------------------------------------------------------------------------------------------------------+
