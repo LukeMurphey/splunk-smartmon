@@ -75,23 +75,15 @@ You can access the source-code and get technical details about the app at:
 FAQ
 ================================================
 
-Q: How do I enable the use of a proxy server?
+Q: Does running smartctl cause a performance degradation?
 
-A: To use a proxy server, re-run the app setup page and enter the information for a proxy server.
+A: Reading the smartctl values has no performance impact. There are scripts that will invoke a short test on a monthly basis. The short test only lasts a few minutes and most disks will give IO preference to the test. Thus, these too should have no performance impact.
 
 ----------------------------------------------------------------------------------------------
 
-Q: Can I allow non-admin users to make and edit inputs?
+Q: I am seeing some error messages when smartctl runs; what do I do?
 
-A: Yes, just assign users the "edit_modinput_web_input" capability. You will likely want to give them the "list_inputs" capability too.
-
-
-
-================================================
-Known Issues
-================================================
-
-* FireFox does not recognize username and password authentication for proxy configurations. You will need to setup the browser directly with a custom proxy setting before running the input.
+A: See https://www.smartmontools.org/wiki/FAQ for information on how to deal with the error.
 
      
 
