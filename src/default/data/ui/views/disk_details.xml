@@ -156,7 +156,7 @@
       <table>
         <title>SMART Attributes</title>
         <search>
-          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | rex "RAW_VALUE\n(?&lt;attributes&gt;([ ]*[0-9]+.*\n)+)" | rex field=attributes max_match=100 "\n(?&lt;attribute&gt;[^\n]+)" | mvexpand attribute | rex max_match=100 field=attribute "[ ]*(?&lt;id&gt;([0-9]+))[ ]+(?&lt;name&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;flag&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;value&gt;([0-9]+))[ ]+(?&lt;worst&gt;([0-9]+))[ ]+(?&lt;threshold&gt;([0-9]+))[ ]+(?&lt;type&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;updated&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;when_failed&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;raw_value&gt;([^\n]+))" | table name id flag value worst threshold type updated when_failed raw_value</query>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | rex "RAW_VALUE\n(?&lt;attributes&gt;([ ]*[0-9]+.*\n)+)" | rex field=attributes max_match=100 "\n(?&lt;attribute&gt;[^\n]+)" | mvexpand attribute | rex max_match=100 field=attribute "[ ]*(?&lt;id&gt;([0-9]+))[ ]+(?&lt;name&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;flag&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;value&gt;([-0-9]+))[ ]+(?&lt;worst&gt;([-0-9]+))[ ]+(?&lt;threshold&gt;([-0-9]+))[ ]+(?&lt;type&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;updated&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;when_failed&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;raw_value&gt;([^\n]+))" | table name id flag value worst threshold type updated when_failed raw_value</query>
           <earliest>-30d@d</earliest>
           <latest>now</latest>
         </search>
