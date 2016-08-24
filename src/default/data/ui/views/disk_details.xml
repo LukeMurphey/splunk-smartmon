@@ -1,4 +1,4 @@
-<form script="tabs.js" stylesheet="tabs.css">
+<form script="tabs.js" stylesheet="tabs.css,disk_details.css">
   <label>Disk Details</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="dropdown" token="serial_number" searchWhenChanged="true">
@@ -134,7 +134,7 @@
       </single>
     </panel>
   </row>
-  <row id="tabs">
+  <row id="tabs_row">
     <panel>
       <html>
         <ul id="tabs" class="nav nav-tabs">
@@ -154,7 +154,6 @@
   <row id="tab_specs">
     <panel>
       <table>
-        <title>Disk Specifications</title>
         <search>
           <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | `timesince(_time,Last_Observed)` | table host Last_Observed Device_Model Serial_Number Firmware_Version User_Capacity Sector_Size Rotation_Rate Wear_Leveling_Count Temperature* | eval row="Value" | eval Temperature_Fahrenheit=Temperature_Celsius*1.8+32 | transpose column_name="Data" header_field=row include_empty=false</query>
           <earliest>-30d@d</earliest>
@@ -171,7 +170,6 @@
   <row id="tab_attrs">
     <panel>
       <table>
-        <title>SMART Attributes</title>
         <search>
           <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | rex "RAW_VALUE\n(?&lt;attributes&gt;([ ]*[0-9]+.*\n)+)" | rex field=attributes max_match=100 "\n(?&lt;attribute&gt;[^\n]+)" | mvexpand attribute | rex max_match=100 field=attribute "[ ]*(?&lt;id&gt;([0-9]+))[ ]+(?&lt;name&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;flag&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;value&gt;([-0-9]+))[ ]+(?&lt;worst&gt;([-0-9]+))[ ]+(?&lt;threshold&gt;([-0-9]+))[ ]+(?&lt;type&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;updated&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;when_failed&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;raw_value&gt;([^\n]+))" | table name id flag value worst threshold type updated when_failed raw_value</query>
           <earliest>-30d@d</earliest>
@@ -188,7 +186,6 @@
   <row id="tab_temperature">
     <panel>
       <chart>
-        <title>Disk Temperature</title>
         <search>
           <query>sourcetype=smartmon Serial_Number=$serial_number$ | eval Temperature_Fahrenheit=Temperature_Celsius*1.8+32 | timechart avg(Temperature_Celsius) as Temperature_Celsius avg(Temperature_Fahrenheit) as Temperature_Fahrenheit</query>
           <earliest>-24h@h</earliest>
