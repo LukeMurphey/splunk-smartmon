@@ -105,4 +105,6 @@ Change History
 | 0.5     | Initial release                                                                                                  |
 |---------|------------------------------------------------------------------------------------------------------------------|
 | 0.6     | Updated README                                                                                                   |
+|         | Added last observed time (useful to determine if hosts are reliably reporting data)                              |
+|         | Added temperature monitoring to the disk details page                                                            |
 +---------+------------------------------------------------------------------------------------------------------------------+
