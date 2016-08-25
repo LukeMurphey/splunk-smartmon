@@ -147,6 +147,9 @@
           <li>
 			<a href="#" class="toggle-tab" data-toggle="tab" data-elements="tab_temperature">Disk Temperature</a>
           </li>
+          <li>
+			<a href="#" class="toggle-tab" data-toggle="tab" data-elements="tab_tests">Self-test Log</a>
+          </li>
 		 </ul>
       </html>
     </panel>
@@ -216,6 +219,22 @@
         <option name="charting.legend.placement">right</option>
         <option name="charting.fieldColors">{"Temperature_Fahrenheit":0xF2B827,"Temperature_Celsius":0xEB8440}</option>
       </chart>
+    </panel>
+  </row>
+  <row id="tab_tests">
+    <panel>
+      <table>
+        <search>
+          <query><![CDATA[sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | rex "LBA_of_first_error\n(?<logs>(#[ ]*[0-9]+[^\n]*\n)+)" | rex field=logs max_match=100 "(?<log>[^\n]+)\n" | mvexpand log | rex max_match=100 field=log "#[ ]*(?<test_number>([0-9]+))[ ]+(?<test_description>([-_a-zA-Z 0-9]+))[ ]+(?<remaining>([0-9]+[%]))[ ]+(?<lifetime_hours>([0-9]+))[ ]+(?<lba_of_first_error>(.*))" | table test_number test_description remaining lifetime_hours lba_of_first_error]]></query>
+          <earliest>-30d@d</earliest>
+          <latest>now</latest>
+        </search>
+        <option name="wrap">true</option>
+        <option name="rowNumbers">false</option>
+        <option name="dataOverlayMode">none</option>
+        <option name="drilldown">cell</option>
+        <option name="count">20</option>
+      </table>
     </panel>
   </row>
 </form>
