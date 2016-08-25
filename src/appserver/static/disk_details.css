@@ -1,4 +1,14 @@
+/**
+ * Eliminate padding around tabs.
+ **/
 #tabs_row > .dashboard-cell > .dashboard-panel  > .panel-element-row > .dashboard-element > .panel-body.html{
 	padding-left: 0px !important;
     padding-right: 0px !important;
+}
+
+/**
+ * Eliminate margin just under the tabs and the panels.
+ **/
+#tabs_row > .dashboard-cell > .dashboard-panel{
+	margin-bottom: 0px;
 }
