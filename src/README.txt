@@ -101,4 +101,7 @@ Change History
 |         | Added temperature monitoring to the disk details page                                                            |
 |         | Fixing issue where attributes were sometimes listed as blank (due to parse issue)                                |
 |         | Disk details page now includes panels in tabs                                                                    |
+|         | Added rendering of self-test logs to disk details page                                                           |
+|         | Added search to alert you to failing disks                                                                       |
+|         | Changed the line-breaker to work with multiple versions of smartmontools                                         |
 +---------+------------------------------------------------------------------------------------------------------------------+
