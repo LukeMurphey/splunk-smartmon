@@ -1,0 +1,11 @@
+.Health_Assessment.pass > .icon-check{
+	color: #65a637;
+	font-weight: bolder;
+	font-size: 11pt;
+}
+
+.Health_Assessment.fail > .icon-alert{
+	color: #d6563c;
+	font-weight: bolder;
+	font-size: 11pt;
+}

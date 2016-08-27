@@ -1,4 +1,4 @@
-<form>
+<form script="disk_monitoring.js" stylesheet="disk_monitoring.css">
   <label>Disk Monitoring</label>
   <fieldset submitButton="true" autoRun="true">
     <input type="time" token="field1">
