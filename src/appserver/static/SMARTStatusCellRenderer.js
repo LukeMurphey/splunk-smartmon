@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     
     var SMARTStatusCellRenderer = BaseCellRenderer.extend({
     	 canRender: function(cell) {
-    		 return ($.inArray(cell.field, ["Health_Assessment"]) >= 0);
+    		 return ($.inArray(cell.field, ["Health_Assessment", "Warnings"]) >= 0);
 		 },
 		 
 		 render: function($td, cell) {
@@ -22,8 +22,6 @@ define(function(require, exports, module) {
 			 // Handle the Health_Assessment field
 			 if( cell.field == "Health_Assessment" ){
 				 
-				 var int_value = parseInt(cell.value, 10);
-				 
 				 if( cell.value == "PASSED" ){
 					 $td.addClass("pass");
 					 icon = 'check';
@@ -34,6 +32,16 @@ define(function(require, exports, module) {
 				 }
 				 
 			 }
+			 
+			// Handle the Warnings field
+			 else if( cell.field == "Warnings" ){
+					 
+					 if( cell.value != null && cell.value.length > 0 ){
+						 $td.addClass("fail");
+						 icon = 'alert';
+					 }
+					 
+				 }
 			 
 			 // Render the cell
 			 if( icon != null ){
