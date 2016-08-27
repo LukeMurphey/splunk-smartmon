@@ -107,7 +107,7 @@
     <panel>
       <table>
         <search>
-          <query>sourcetype=smartmon host=$host$ $status$ | `timesince(_time,Last_Observed)` | `smart_look_for_warnings(Warnings)` | stats latest(SMART_overall_health_self_assessment_test_result) as Health_Assessment latest(Warnings) as Warnings latest(Model_Family) as Model_Family latest(Device_Model) as Device_Model latest(Last_Observed) as Last_Observed by host Serial_Number</query>
+          <query>sourcetype=smartmon host=$host$ $status$ | `timesince(_time,Last_Observed)` | `smart_look_for_warnings(Warnings)` | fillnull Warnings value="" | stats latest(SMART_overall_health_self_assessment_test_result) as Health_Assessment latest(Warnings) as Warnings latest(Model_Family) as Model_Family latest(Device_Model) as Device_Model latest(Last_Observed) as Last_Observed by host Serial_Number</query>
           <earliest>$field1.earliest$</earliest>
           <latest>$field1.latest$</latest>
         </search>
