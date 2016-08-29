@@ -12,3 +12,12 @@
 #tabs_row > .dashboard-cell > .dashboard-panel{
 	margin-bottom: 0px;
 }
+
+/**
+ * Styles for the cell renderer
+ **/
+.Value.fail > .icon-alert{
+	color: #d6563c;
+	font-weight: bolder;
+	font-size: 11pt;
+}

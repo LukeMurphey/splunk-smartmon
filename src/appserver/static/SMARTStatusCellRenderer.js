@@ -9,7 +9,7 @@ define(function(require, exports, module) {
     
     var SMARTStatusCellRenderer = BaseCellRenderer.extend({
     	 canRender: function(cell) {
-    		 return ($.inArray(cell.field, ["Health_Assessment", "Warnings"]) >= 0);
+    		 return ($.inArray(cell.field, ["Health_Assessment", "Warnings", "Warning", "Value"]) >= 0);
 		 },
 		 
 		 render: function($td, cell) {
@@ -33,15 +33,21 @@ define(function(require, exports, module) {
 				 
 			 }
 			 
-			// Handle the Warnings field
-			 else if( cell.field == "Warnings" ){
+			// Handle the Warning(s) field
+			 else if( cell.field == "Warnings" || cell.field == "Warning" ){
 					 
 					 if( cell.value != null && cell.value.length > 0 ){
 						 $td.addClass("fail");
 						 icon = 'alert';
 					 }
 					 
-				 }
+			 }
+			 
+			 // Handle the Value field when it indicates a firmware update is available
+			 else if( cell.field == "Value" && cell.value != null && cell.value.indexOf("firmware update") > -1 ){
+				 	 $td.addClass("fail");
+					 icon = 'alert';				 
+			 }
 			 
 			 // Render the cell
 			 if( icon != null ){

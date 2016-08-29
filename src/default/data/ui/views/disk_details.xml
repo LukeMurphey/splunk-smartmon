@@ -1,4 +1,4 @@
-<form script="tabs.js" stylesheet="tabs.css,disk_details.css">
+<form script="tabs.js,disk_details.js" stylesheet="tabs.css,disk_details.css">
   <label>Disk Details</label>
   <fieldset submitButton="false" autoRun="true">
     <input type="dropdown" token="serial_number" searchWhenChanged="true">
@@ -158,7 +158,7 @@
     <panel>
       <table>
         <search>
-          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | `timesince(_time,Last_Observed)` | table host Last_Observed Device_Model Serial_Number Firmware_Version User_Capacity Sector_Size Rotation_Rate Wear_Leveling_Count Temperature* | eval row="Value" | eval Temperature_Fahrenheit=Temperature_Celsius*1.8+32 | transpose column_name="Data" header_field=row include_empty=false</query>
+          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | `timesince(_time,Last_Observed)` | table host Last_Observed Warning Device_Model Serial_Number Firmware_Version User_Capacity Sector_Size Rotation_Rate Wear_Leveling_Count Temperature* | eval row="Value" | eval Temperature_Fahrenheit=Temperature_Celsius*1.8+32 | transpose column_name="Data" header_field=row include_empty=false</query>
           <earliest>-30d@d</earliest>
           <latest>now</latest>
         </search>
