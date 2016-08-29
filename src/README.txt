@@ -104,4 +104,5 @@ Change History
 |         | Added rendering of self-test logs to disk details page                                                           |
 |         | Added search to alert you to failing disks                                                                       |
 |         | Changed the line-breaker to work with multiple versions of smartmontools                                         |
+|         | Warning messages from smartctl are now parsed and displayed on the dashboards                                    |
 +---------+------------------------------------------------------------------------------------------------------------------+
