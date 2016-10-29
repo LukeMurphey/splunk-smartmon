@@ -105,4 +105,7 @@ Change History
 |         | Added search to alert you to failing disks                                                                       |
 |         | Changed the line-breaker to work with multiple versions of smartmontools                                         |
 |         | Warning messages from smartctl are now parsed and displayed on the dashboards                                    |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 1.0     | Fix commented out but incorrect cron schedule                                                                    |
+|         | Fixed incorrect regex on Disk Details dashboard that sometimes caused self test results to be parsed incorrectly |
 +---------+------------------------------------------------------------------------------------------------------------------+
