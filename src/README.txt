@@ -108,4 +108,5 @@ Change History
 |---------|------------------------------------------------------------------------------------------------------------------|
 | 1.0     | Fix commented out but incorrect cron schedule                                                                    |
 |         | Fixed incorrect regex on Disk Details dashboard that sometimes caused self test results to be parsed incorrectly |
+|         | Added single value of disks with warnings                                                                        |
 +---------+------------------------------------------------------------------------------------------------------------------+

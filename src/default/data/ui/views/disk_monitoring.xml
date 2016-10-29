@@ -57,6 +57,28 @@
     <panel>
       <single>
         <search>
+          <query>sourcetype=smartmon | `smart_look_for_warnings(Warnings)` | search Warnings=* | timechart distinct_count(host)</query>
+          <earliest>$field1.earliest$</earliest>
+          <latest>$field1.latest$</latest>
+        </search>
+        <option name="colorBy">value</option>
+        <option name="colorMode">block</option>
+        <option name="numberPrecision">0</option>
+        <option name="rangeColors">["0x65a637","0xf58f39"]</option>
+        <option name="rangeValues">[0]</option>
+        <option name="showSparkline">1</option>
+        <option name="showTrendIndicator">1</option>
+        <option name="trendColorInterpretation">standard</option>
+        <option name="trendDisplayMode">absolute</option>
+        <option name="trendInterval">auto</option>
+        <option name="underLabel">Disk with warnings</option>
+        <option name="useColors">1</option>
+        <option name="useThousandSeparators">1</option>
+      </single>
+    </panel>
+    <panel>
+      <single>
+        <search>
           <query>sourcetype=smartmon | timechart distinct_count(Serial_Number)</query>
           <earliest>$field1.earliest$</earliest>
           <latest>$field1.latest$</latest>
@@ -105,7 +127,7 @@
   </row>
   <row>
     <panel>
-      <table>
+      <table id="disks_table">
         <search>
           <query>sourcetype=smartmon host=$host$ $status$ | `timesince(_time,Last_Observed)` | `smart_look_for_warnings(Warnings)` | fillnull Warnings value="" | eval Warnings=if(Warnings="",Warning,Warnings) | stats latest(SMART_overall_health_self_assessment_test_result) as Health_Assessment latest(Warnings) as Warnings latest(Model_Family) as Model_Family latest(Device_Model) as Device_Model latest(Last_Observed) as Last_Observed by host Serial_Number</query>
           <earliest>$field1.earliest$</earliest>
