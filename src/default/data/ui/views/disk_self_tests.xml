@@ -1,5 +1,5 @@
 <form>
-  <label>Disk Tests</label>
+  <label>Disk Self Test Activity</label>
   <fieldset submitButton="true" autoRun="true">
     <input type="time" token="timefield">
       <label></label>
@@ -22,7 +22,7 @@
   </fieldset>
   <row>
     <panel>
-      <title>Disk Self Tests</title>
+      <title>Disk Tests</title>
       <table>
         <search>
           <query><![CDATA[| savedsearch "Disk test runs" | append [| inputlookup append=t disk_test_runs.csv | where time >="$timefield.earliest$" AND _time < if("$timefield.earliest$"=="", now(), "$timefield.earliest$") ] | search host=$host$ | stats last(Device_Model) as Device_Model last(Model_Family) as Model_Family last(host) as host min(time) as time by Serial_Number lifetime_hours | sort -time Serial_Number lifetime_hours | fields time host Serial_Number Device_Model  Model_Family lifetime_hours | convert ctime(time)]]></query>
@@ -32,17 +32,20 @@
         </search>
         <option name="count">20</option>
         <option name="dataOverlayMode">none</option>
-        <option name="drilldown">cell</option>
+        <option name="drilldown">row</option>
         <option name="percentagesRow">false</option>
         <option name="rowNumbers">false</option>
         <option name="totalsRow">false</option>
         <option name="wrap">true</option>
+        <drilldown>
+			<link><![CDATA[/app/smartmon/disk_details?form.serial_number=$row.Serial_Number$&earliest=$earliest$&latest=$latest$]]></link>
+	    </drilldown>
       </table>
     </panel>
   </row>
   <row>
     <panel>
-      <title>Disk Self Tests (over time)</title>
+      <title>Disk Tests (over time)</title>
       <chart>
         <search>
           <query><![CDATA[| savedsearch "Disk test runs" | append [| inputlookup append=t disk_test_runs.csv | where time >="$timefield.earliest$" AND _time < if("$timefield.earliest$"=="", now(), "$timefield.earliest$") ] | search host=$host$ | stats last(Device_Model) as Device_Model last(Model_Family) as Model_Family last(host) as host min(time) as time by Serial_Number lifetime_hours | eval _time=time | timechart count]]></query>
