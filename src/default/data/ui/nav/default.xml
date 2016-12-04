@@ -1,4 +1,5 @@
 <nav color="#455899">
   <view name="disk_monitoring" default="true" />
   <view name="disk_details" />
+  <view name="disk_self_tests" />
 </nav>

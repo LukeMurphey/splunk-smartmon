@@ -110,4 +110,6 @@ Change History
 |         | Fixed incorrect regex on Disk Details dashboard that sometimes caused self test results to be parsed incorrectly |
 |         | Added single value of disks with warnings                                                                        |
 |         | Added filtering option for disks with warnings on the Disk Monitoring dashboard                                  |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 1.1     | Added disk test reporting dashboard                                                                              |
 +---------+------------------------------------------------------------------------------------------------------------------+
