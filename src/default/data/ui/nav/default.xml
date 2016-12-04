@@ -2,4 +2,11 @@
   <view name="disk_monitoring" default="true" />
   <view name="disk_details" />
   <view name="disk_self_tests" />
+  <collection label="Search">
+  	<view name="search" />
+  	<view name="datasets" />
+  	<view name="reports" />
+  	<view name="alerts" />
+  	<view name="dashboards" />
+  </collection>
 </nav>
