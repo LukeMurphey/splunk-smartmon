@@ -112,4 +112,6 @@ Change History
 |         | Added filtering option for disks with warnings on the Disk Monitoring dashboard                                  |
 |---------|------------------------------------------------------------------------------------------------------------------|
 | 1.1     | Added disk test reporting dashboard                                                                              |
+|         | Added the search views to the nav                                                                                |
+|         | Updated icon                                                                                                     |
 +---------+------------------------------------------------------------------------------------------------------------------+
