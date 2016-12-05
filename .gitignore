@@ -63,3 +63,4 @@ target/
 local.properties
 .pydevproject
 tmp/
+.DS_Store
