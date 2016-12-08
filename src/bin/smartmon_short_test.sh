@@ -7,7 +7,14 @@ SMARTCTL="smartctl"
 DISKS=$($SMARTCTL --scan)
 TEST="short"
 
+# Set the IFS to split the output of smartctl by newlines
+IFS='
+'
+
 # Run smartctl on each disk
-while read -r DISK; do
-    eval $SMARTCTL -t $TEST $DISK
-done <<< "$DISKS"
+for DISK in $DISKS
+do
+	# Get just the disk name (everything before the first space)
+	DISK_CLEAN="$(echo "$DISK" | cut -d ' ' -f 1)"
+	$SMARTCTL -t $TEST $DISK_CLEAN
+done
