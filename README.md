@@ -1,4 +1,4 @@
-# splunk-smart
+# Disk Monitoring app for Splunk
 
 This app provides a mechanism for monitoring the host for hard-drive failures using S.M.A.R.T technology (via https://sourceforge.net/projects/smartmontools/).
 
