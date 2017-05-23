@@ -7,15 +7,29 @@ This app provides a mechanism to detect hard-drive failures before they occur. T
 
 
 ================================================
+Installing the App
+================================================
+
+Install this app into Splunk by doing the following:
+
+  1. Log in to Splunk Web and navigate to "Apps » Manage Apps" via the app dropdown at the top left of Splunk's user interface
+  2. Click the "install app from file" button
+  3. Upload the file by clicking "Choose file" and selecting the app
+  4. Click upload
+  5. Restart Splunk if a dialog asks you to
+
+
+
+================================================
 Configuring Splunk
 ================================================
 
 The app contains a series of scripts that will:
 
-  1) Perform a S.M.A.R.T. self-test: this is recommended monthly
+  1) Perform a S.M.A.R.T. self-test: this is recommended monthly or weekly
   2) Obtain S.M.A.R.T. data: this is recommended hourly
   
-Several versions of the scripts are included:
+Several versions of the scripts are included, enable the one that matches your platform:
 
   +-------------------------+------------------------------------------+------------------------------+--------------------+
   |         Script          |                 Purpose                  |         Environment          |       Notes        |
@@ -33,7 +47,7 @@ smartctl binaries for Windows are included by default in order to make installat
 
 Windows
 ________________________________________________
-This app doesn't require Python and can be installed on a Universal Forwarder as well as a heavy forwarder. The input for performing hourly data gathering and monthly tests should work by default. No further changes should be necessary other than installing the app on a forwarder.
+The app will obtain data automatically when installed on Windows. The input for performing hourly data gathering and monthly tests should work by default. No further changes should be necessary other than installing the app on a forwarder. This app doesn't require Python and can be installed on a Universal Forwarder as well as a heavy forwarder.
 
 The app publishes views that will appear when the app is installed on a Search Head. It is recommended that you install the app on the Search Heads in order to monitor the Search Head disks and to use the analysis views.
 
