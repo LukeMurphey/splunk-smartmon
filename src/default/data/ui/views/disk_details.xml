@@ -174,7 +174,10 @@
     <panel>
       <table>
         <search>
-          <query>sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | rex "RAW_VALUE\n(?&lt;attributes&gt;([ ]*[0-9]+.*\n)+)" | rex field=attributes max_match=100 "\n(?&lt;attribute&gt;[^\n]+)" | mvexpand attribute | rex max_match=100 field=attribute "[ ]*(?&lt;id&gt;([0-9]+))[ ]+(?&lt;name&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;flag&gt;([-0-9a-zA-Z_]+))[ ]+(?&lt;value&gt;([-0-9]+))[ ]+(?&lt;worst&gt;([-0-9]+))[ ]+(?&lt;threshold&gt;([-0-9]+))[ ]+(?&lt;type&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;updated&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;when_failed&gt;([-_a-zA-Z0-9]+))[ ]+(?&lt;raw_value&gt;([^\n]+))" | table name id flag value worst threshold type updated when_failed raw_value</query>
+          <query><![CDATA[
+          sourcetype=smartmon Serial_Number=$serial_number$ | head 1 | rex "RAW_VALUE\n(?<attributes>([ ]*[0-9]+.*\n)+)" | rex field=attributes max_match=100 "(?<attribute>[^\n]+)" | mvexpand attribute | rex max_match=100 field=attribute "[ ]*(?<id>([0-9]+))[ ]+(?<name>([-0-9a-zA-Z_]+))[ ]+(?<flag>([-0-9a-zA-Z_]+))[ ]+(?<value>([-0-9]+))[ ]+(?<worst>([-0-9]+))[ ]+(?<threshold>([-0-9]+))[ ]+(?<type>([-_a-zA-Z0-9]+))[ ]+(?<updated>([-_a-zA-Z0-9]+))[ ]+(?<when_failed>([-_a-zA-Z0-9]+))[ ]+(?<raw_value>([^\n]+))" | table name id flag value worst threshold type updated when_failed raw_value</query>
+           ]]>
+          </query>
           <earliest>-30d@d</earliest>
           <latest>now</latest>
         </search>
