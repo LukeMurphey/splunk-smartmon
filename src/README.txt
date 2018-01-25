@@ -134,4 +134,7 @@ Change History
 | 1.1.2   | Updating *nix shell scripts to work on shells that don't support the "here string" operator (e.g. "<<<")         |
 |---------|------------------------------------------------------------------------------------------------------------------|
 | 1.1.3   | Fixing issue where the first attribute was not listed on the disk details page                                   |
+|---------|------------------------------------------------------------------------------------------------------------------|
+| 1.1.4   | Fixing issue where you could not get past the setup page                                                         |
+|         | Improved the appearance of the tabs                                                                              |
 +---------+------------------------------------------------------------------------------------------------------------------+
