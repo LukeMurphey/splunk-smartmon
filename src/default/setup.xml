@@ -1,14 +1,3 @@
 <setup>
-    <block title="Setup for Disk Monitoring">
-        <text>
-            <![CDATA[
-            Setup is not required for this app.
-			
-            <div class="jmFormActions" style="margin-top: 16px">
-                       <button class="splButton-primary" onclick="document.location='../../../../../app/smartmon'">Go to app</button>
-            </div>
-            ]]>
-        </text>
-    </block>
-  
+  <block task="setup_disk_monitoring_app" type="redirect" />
 </setup>

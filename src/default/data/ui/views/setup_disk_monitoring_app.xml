@@ -1,0 +1,10 @@
+<form hideEdit="true" script="setup.js">
+  <label>Disk Monitoring App Setup</label>
+	<row>
+	   <panel>
+	      <html>
+	         <div id="setup-view"></div>
+	      </html>
+	   </panel>
+	</row>
+</form>
