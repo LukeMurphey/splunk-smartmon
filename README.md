@@ -9,3 +9,5 @@ A hard-drive will be flagged as having issues if any of the following shows issu
 * SMART 188 – Command_Timeout. (1-13 warning, > 13 replace)
 * SMART 197 – Current_Pending_Sector_Count. (> 1 replace)
 * SMART 198 – Offline_Uncorrectable. (> 1 replace)
+
+I support this app in my free-time and at my own expense. Please consider offering a donation in order to promote continued development. [You can donate on Paypal.](https://www.paypal.com/donate?business=MQSKTS3W7LUTY&item_name=Support+continued+development+of+Splunk+apps&currency_code=USD)
